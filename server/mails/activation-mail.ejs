@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkIQ Activation Email</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            min-width: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #f4f7f6; /* Changed background color */
+            color: #333333; /* Changed text color */
+        }
+        a { 
+            color: #0070f3; /* Changed link color */
+            text-decoration: none;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-top: 0;
+            margin-bottom: 20px; /* Increased margin */
+            text-align: center;
+            color: #fff; /* Changed header color */
+        }
+        h2 {
+            font-size: 28px; /* Increased font size */
+            font-weight: 700;
+            margin-top: 20px; /* Increased margin */
+            margin-bottom: 10px; /* Increased margin */
+            text-align: center;
+            color: #333333; /* Changed text color */
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #555555; /* Changed text color */
+        }
+        table td {
+            vertical-align: top;
+        }
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px; /* Added padding */
+            border-radius: 8px; /* Added border radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box shadow */
+            background-color: #ffffff;
+        }
+        .email-header {
+            background-color: #0070f3;
+            padding: 24px;
+            color: #ffffff;
+            border-top-left-radius: 8px; /* Added border radius */
+            border-top-right-radius: 8px; /* Added border radius */
+        }
+        .email-body {
+            padding: 24px;
+        }
+        .email-footer {
+            background-color: #f6f6f6;
+            padding: 24px;
+            border-bottom-left-radius: 8px; /* Added border radius */
+            border-bottom-right-radius: 8px; /* Added border radius */
+        }
+        .button {
+            display: inline-block;
+            background-color: #0070f3;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Welcome to WorkIQ</h1>
+        </div>
+        <div class="email-body">
+            <p>Hello <%= user.name %> ,</p>
+            <p>Thank you for registering with WorkIQ. To activate your account, please use the following code:</p>
+            <h2><%= activationCode %></h2>
+            <p style="text-align: center;">Please enter this code on the activation page within the next 5 minutes.</p>
+            <p>If you did not register for a WorkIQ account, please ignore this email.</p>
+        </div>
+        <div class="email-footer">
+            <p>If you have any questions, please don't hesitate to contact us at <a href="mailto:musamuhammedolayinka@gmail.com">Muhammad</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

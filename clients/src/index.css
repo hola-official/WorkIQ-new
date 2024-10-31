@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  border-radius: 20px;
+  background-color: #c2c2c2; /* or add it to the track */
+}
+
+/* Add a thumb */
+::-webkit-scrollbar-thumb {
+  background: #403f46;
+  border-radius: 20px;
+}
+
+.two-line-truncate {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.background-light900_dark300 {
+  @apply bg-light-900;
+  /* @apply bg-light-900 dark:bg-dark-300; */
+}
+
+.light-border {
+  @apply border-light-800;
+  /* @apply border-light-800 dark:border-dark-300; */
+}
