@@ -29,6 +29,7 @@ import Withdraw from "./pages/Freelancer/withdraw/Withdraw";
 import StripeOnboardingRefresh from "./pages/Freelancer/stripe/StripeOnboardingRefresh";
 import StripeOnboardingComplete from "./pages/Freelancer/stripe/StripeOnboardingComplete";
 import MessagePage from "./pages/messages/MessagePage";
+// import PersistLogin from "./pages/Auth/features/PersistLogin";
 
 function App() {
   return (
@@ -39,64 +40,72 @@ function App() {
       <Route path="/activate-verify" element={<AccountVerifyEmailForm />} />
       <Route path="/forget-password" element={<ForgetingPwd />} />
       <Route path="/activate-form" element={<VerifyEmailForm />} />
-      <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
       <Route path="/auth" element={<AuthPage />} />
-      <Route path="/auth/google-verify" element={<GoogleAuth />} />
-      <Route path="/admin/approve/verify/:token" element={<ApproveVerification />} />
-        <Route path="dashboard" element={<DashboardPage />} />
-        <Route path="messages" element={<MessagePage />} />
-        <Route path="profile/:query" element={<ProfilePage />} />
-        <Route path="manage-orders" element={<OrderTrack />} />
-        <Route path="track/order/:orderId" element={<OrderTrackPage />} />
-      </Route>
-      <Route
-        element={
-          <RequireAuth
-            allowedRoles={[ROLES.Admin, ROLES.Client, ROLES.Freelancer]}
-          />
-        }
-      >
-        <Route path="projects">
-          <Route index element={<TasksIndex />} />
-          <Route path=":taskId/overview" element={<TaskInfo />} />
-          <Route
-            path="apply/:taskId/section/:sectionId"
-            element={<Proposal />}
-          />
-          <Route path="applicants/:taskId/details" element={<Applicants />} />
-        </Route>
-      </Route>
-      <Route element={
-        <RequireAuth
-          allowedRoles={[ROLES.Admin, ROLES.Freelancer]}
-        />}>
-        <Route
-          path="stripe-connect/refresh"
-          element={<StripeOnboardingRefresh />}
-        />
-        <Route
-          path="stripe-connect/complete"
-          element={<StripeOnboardingComplete />}
-        />
-        <Route
-          path="withdraw"
-          element={<Withdraw />}
-        />
-      </Route>
 
-      <Route
-        element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Client]} />}
-      >
-        <Route path="clients">
-          <Route path="my-tasks" element={<ClientTasks />} />
-          <Route path="create-tasks" element={<CreateTask />} />
-          <Route path="edit-task/:taskId" element={<EditTaskPage />} />
+      {/* <Route element={<PersistLogin />}> */}
+        <Route
+          element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}
+        >
+          <Route path="/auth/google-verify" element={<GoogleAuth />} />
           <Route
-            path="edit-task/:taskId/section/:sectionId"
-            element={<EditSection />}
+            path="/admin/approve/verify/:token"
+            element={<ApproveVerification />}
           />
+          <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="messages" element={<MessagePage />} />
+          <Route path="profile/:query" element={<ProfilePage />} />
+          <Route path="manage-orders" element={<OrderTrack />} />
+          <Route path="track/order/:orderId" element={<OrderTrackPage />} />
         </Route>
-      </Route>
+
+        <Route
+          element={
+            <RequireAuth
+              allowedRoles={[ROLES.Admin, ROLES.Client, ROLES.Freelancer]}
+            />
+          }
+        >
+          <Route path="projects">
+            <Route index element={<TasksIndex />} />
+            <Route path=":taskId/overview" element={<TaskInfo />} />
+            <Route
+              path="apply/:taskId/section/:sectionId"
+              element={<Proposal />}
+            />
+            <Route path="applicants/:taskId/details" element={<Applicants />} />
+          </Route>
+        </Route>
+
+        <Route
+          element={
+            <RequireAuth allowedRoles={[ROLES.Admin, ROLES.Freelancer]} />
+          }
+        >
+          <Route
+            path="stripe-connect/refresh"
+            element={<StripeOnboardingRefresh />}
+          />
+          <Route
+            path="stripe-connect/complete"
+            element={<StripeOnboardingComplete />}
+          />
+          <Route path="withdraw" element={<Withdraw />} />
+        </Route>
+
+        <Route
+          element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Client]} />}
+        >
+          <Route path="clients">
+            <Route path="my-tasks" element={<ClientTasks />} />
+            <Route path="create-tasks" element={<CreateTask />} />
+            <Route path="edit-task/:taskId" element={<EditTaskPage />} />
+            <Route
+              path="edit-task/:taskId/section/:sectionId"
+              element={<EditSection />}
+            />
+          </Route>
+        </Route>
+      {/* </Route> */}
     </Routes>
   );
 }
