@@ -46,9 +46,9 @@ const Pricing = () => {
           },
           {
             title: "Crypto Payments",
-            description: "Fast and borderless transactions with USDC on Celo",
+            description: "Fast and borderless transactions with XUSD on Celo",
             features: [
-              "USDC stablecoin",
+              "XUSD stablecoin",
               "Low gas fees on Celo",
               "Instant settlements",
             ],

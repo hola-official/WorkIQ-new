@@ -11,7 +11,16 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button, Switch, FormControl, FormLabel, FormErrorMessage, Box, Flex, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Switch,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Box,
+  Flex,
+  Text,
+} from "@chakra-ui/react";
 import useAuth from "@/hooks/useAuth";
 import truncateWalletAddress from "@/lib/truncateWalletAddress";
 import { useAccount } from "wagmi";
@@ -22,12 +31,14 @@ export const ConfirmPublishModal = ({ children, onConfirm, price }) => {
   const [open, setOpen] = useState(false);
   const { isConnected } = useAccount();
 
-  const FormSchema = z.object({
-    paymentMethod: z.enum(["usd", "crypto"]).optional(),
-  }).refine((data) => data.paymentMethod !== undefined, {
-    message: "You have to select at least one payment method.",
-    path: ["paymentMethod"],
-  });
+  const FormSchema = z
+    .object({
+      paymentMethod: z.enum(["usd", "crypto"]).optional(),
+    })
+    .refine((data) => data.paymentMethod !== undefined, {
+      message: "You have to select at least one payment method.",
+      path: ["paymentMethod"],
+    });
 
   const form = useForm({
     resolver: zodResolver(FormSchema),
@@ -40,7 +51,9 @@ export const ConfirmPublishModal = ({ children, onConfirm, price }) => {
     { id: "usd", label: "USD Payment" },
     {
       id: "crypto",
-      label: `USDC Payment ${paymentWallet ? `(${truncateWalletAddress(paymentWallet)})` : ""}`,
+      label: `XUSD Payment ${
+        paymentWallet ? `(${truncateWalletAddress(paymentWallet)})` : ""
+      }`,
     },
   ];
 
@@ -59,9 +72,13 @@ export const ConfirmPublishModal = ({ children, onConfirm, price }) => {
   };
 
   const handleSwitchChange = (itemId) => {
-    form.setValue("paymentMethod", itemId === watchedPaymentMethod ? undefined : itemId, {
-      shouldValidate: true,
-    });
+    form.setValue(
+      "paymentMethod",
+      itemId === watchedPaymentMethod ? undefined : itemId,
+      {
+        shouldValidate: true,
+      }
+    );
   };
 
   return (
@@ -100,9 +117,7 @@ export const ConfirmPublishModal = ({ children, onConfirm, price }) => {
             </FormControl>
           ))}
           {errors.paymentMethod && (
-            <FormErrorMessage>
-              {errors.paymentMethod.message}
-            </FormErrorMessage>
+            <FormErrorMessage>{errors.paymentMethod.message}</FormErrorMessage>
           )}
           <AlertDialogFooter>
             <Button variant="outline" onClick={() => setOpen(false)}>

@@ -10,8 +10,8 @@ import { parseUnits, formatUnits } from "viem";
 import {
   TASK_MANAGEMENT_ABI,
   TASK_MANAGEMENT_CA,
-  USDC_ABI,
-  USDC_CA,
+  XUSD_ABI,
+  XUSD_CA,
 } from "@/contract/taskManagement";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import useAuth from "./useAuth";
@@ -79,23 +79,23 @@ export function useTaskManagement() {
     [checkConnectionAndChain]
   );
 
-  // USDC Approval
+  // XUSD Approval
   const {
-    writeContract: approveUSDCRaw,
+    writeContract: approveXUSDRaw,
     data: approveDataHash,
     isPending: isApproving,
     error: approveError,
   } = useWriteContract({
-    address: USDC_CA,
-    abi: USDC_ABI,
+    address: XUSD_CA,
+    abi: XUSD_ABI,
     functionName: "approve",
   });
 
-  const approveUSDC = wrapWithConnectionAndChainCheck((amount) => {
-    console.log("Inside approveUSDC, amount:", amount);
-    return approveUSDCRaw({
-      address: USDC_CA,
-      abi: USDC_ABI,
+  const approveXUSD = wrapWithConnectionAndChainCheck((amount) => {
+    console.log("Inside approveXUSD, amount:", amount);
+    return approveXUSDRaw({
+      address: XUSD_CA,
+      abi: XUSD_ABI,
       functionName: "approve",
       args: [TASK_MANAGEMENT_CA, parseUnits(amount, 6)],
     });
@@ -409,7 +409,7 @@ export function useTaskManagement() {
     useWaitForTransactionReceipt({ hash: deleteTaskHash });
 
   return {
-    approveUSDC,
+    approveXUSD,
     approveDataHash,
     isApproving,
     approveError:

@@ -1,7 +1,7 @@
-export const TASK_MANAGEMENT_CA = "0x863a65fC1A6FBf95b90ac9e32E851fD9977AC589";
-export const USDC_CA = "0x2F25deB3848C207fc8E0c34035B3Ba7fC157602B";
+export const TASK_MANAGEMENT_CA = "0x5b73C5498c1E3b4dbA84de0F1833c4a029d90519";
+export const XUSD_CA = "0xc4Eb29627B1b0FF88410Fad383F14492F4851FEe";
 
-export const USDC_ABI = [
+export const XUSD_ABI = [
   {
     constant: true,
     inputs: [{ name: "_owner", type: "address" }],
@@ -57,7 +57,7 @@ export const TASK_MANAGEMENT_ABI = [
     inputs: [
       {
         internalType: "address",
-        name: "_usdcTokenAddress",
+        name: "_XUSDTokenAddress",
         type: "address",
       },
     ],
@@ -950,7 +950,7 @@ export const TASK_MANAGEMENT_ABI = [
   },
   {
     inputs: [],
-    name: "usdcToken",
+    name: "XUSDToken",
     outputs: [
       {
         internalType: "contract IERC20",
@@ -1002,7 +1002,7 @@ export const TASK_MANAGEMENT_ABI = [
       },
       {
         internalType: "uint256",
-        name: "usdcBalance",
+        name: "XUSDBalance",
         type: "uint256",
       },
       {

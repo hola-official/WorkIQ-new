@@ -22,55 +22,63 @@ import userAtom from "./atoms/userAtom";
 import tokenAtom from "./atoms/tokenAtom";
 
 
-const celoAlfajores = {
-	id: 44787,
-	name: 'Celo Alfajores',
-	network: 'alfajores',
-	iconUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU2dk8Lfcj3vosaen0cFXHBCLPMULaNahY_w&s',
-	iconBackground: '#35D07F',
-	nativeCurrency: {
-		decimals: 18,
-		name: 'Celo Alfajores',
-		symbol: 'alfajores',
-	},
-	rpcUrls: {
-		public: { http: ['https://alfajores-forno.celo-testnet.org'] },
-		default: { http: ['https://alfajores-forno.celo-testnet.org'] },
-	},
-	blockExplorers: {
-		default: { name: 'Celo Explorer', url: 'https://explorer.celo.org/alfajores' },
-		etherscan: { name: 'Celo Explorer', url: 'https://explorer.celo.org/alfajores' },
-	},
-	testnet: true,
-}
+const crossFiTestnet = {
+  id: 4157,
+  name: "CrossFi Testnet",
+  network: "XFI",
+  iconUrl:
+    "https://res.cloudinary.com/dlldg3xxz/image/upload/b_rgb:333B4C/c_crop,w_590,h_590,ar_1:1,e_improve,e_sharpen/v1742464608/Icon-version-_-Color-CROSSFI-CHAIN_omwgp3.png",
+  iconBackground: "#35D07F",
+  nativeCurrency: {
+    decimals: 6,
+    name: "CrossFi Testnet",
+    symbol: "XFI",
+  },
+  rpcUrls: {
+    public: { http: ["https://crossfi-testnet.g.alchemy.com/v2/HC6Ga3Il6VWwi6eIz-yTFMer7YZkw_vZ"] },
+    default: { http: ["https://crossfi-testnet.g.alchemy.com/v2/HC6Ga3Il6VWwi6eIz-yTFMer7YZkw_vZ"] },
+  },
+  blockExplorers: {
+    default: { name: "CrossFi Explorer", url: "https://test.xfiscan.com/" },
+    etherscan: { name: "CrossFi Explorer", url: "https://test.xfiscan.com/" },
+  },
+  testnet: true,
+};
 
-const celo = {
-	id: 42220,
-	name: 'Celo',
-	network: 'celo',
-	iconUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU2dk8Lfcj3vosaen0cFXHBCLPMULaNahY_w&s",
-	iconBackground: '#35D07F',
-	nativeCurrency: {
-		decimals: 18,
-		name: 'Celo',
-		symbol: 'CELO',
-	},
-	rpcUrls: {
-		public: { http: ['https://forno.celo.org'] },
-		default: { http: ['https://forno.celo.org'] },
-	},
-	blockExplorers: {
-		default: { name: 'Celo Explorer', url: 'https://explorer.celo.org/mainnet' },
-		etherscan: { name: 'Celo Explorer', url: 'https://explorer.celo.org/mainnet' },
-	},
-	testnet: false,
-}
+const crossFi = {
+  id: 4158,
+  name: "CrossFi",
+  network: "crossFi",
+  iconUrl:
+    "https://res.cloudinary.com/dlldg3xxz/image/upload/b_rgb:333B4C/c_crop,w_590,h_590,ar_1:1,e_improve,e_sharpen/v1742464608/Icon-version-_-Color-CROSSFI-CHAIN_omwgp3.png",
+  iconBackground: "#35D07F",
+  nativeCurrency: {
+    decimals: 18,
+    name: "CrossFi Mainet",
+    symbol: "XFI",
+  },
+  rpcUrls: {
+    public: { http: ["https://rpc.mainnet.ms"] },
+    default: { http: ["https://rpc.mainnet.ms"] },
+  },
+  blockExplorers: {
+    default: {
+      name: "CrossFi Explorer",
+      url: "https://xfiscan.com/",
+    },
+    etherscan: {
+      name: "CrossFi Explorer",
+      url: "https://xfiscan.com/",
+    },
+  },
+  testnet: false,
+};
 
 
 const config = getDefaultConfig({
 	appName: "WorkIQ",
 	projectId: "044601f65212332475a09bc14ceb3c34",
-	chains: [mainnet, celo, celoAlfajores],
+	chains: [mainnet, crossFi, crossFiTestnet],
 });
 
 const queryClient = new QueryClient();
@@ -128,7 +136,7 @@ export const WagmiConfigProvider = ({ children }) => {
 			try {
 				const response = await fetch(`${baseUrl}/nonce`);
 				const { nonce } = await response.json();
-				console.log('Nonce retrieved:', nonce);
+				console.log('Nonce retrieved: ', nonce);
 				return nonce;
 			} catch (error) {
 				console.error('Error retrieving nonce:', error);

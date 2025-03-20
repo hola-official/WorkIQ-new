@@ -22,7 +22,12 @@ const schema = z.object({
   paymentMethod: z.enum(["crypto", "fiat"]).default("fiat"),
 });
 
-const PaymentCheck = ({ taskId, sectionId, setRefetchSection, initialData }) => {
+const PaymentCheck = ({
+  taskId,
+  sectionId,
+  setRefetchSection,
+  initialData,
+}) => {
   const { paymentWallet, stripeOnboardingComplete } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,8 +68,8 @@ const PaymentCheck = ({ taskId, sectionId, setRefetchSection, initialData }) => 
       showToast(
         "Error",
         "Something went wrong" ||
-        error.response.data.message ||
-        error.response.data.error,
+          error.response.data.message ||
+          error.response.data.error,
         "error"
       );
     } finally {
@@ -86,16 +91,29 @@ const PaymentCheck = ({ taskId, sectionId, setRefetchSection, initialData }) => 
                 mb={4}
               >
                 <FormLabel htmlFor="crypto" mb="0" className="text-lg">
-                  {`USDC Payment ${paymentWallet ? `(${truncateWalletAddress(paymentWallet)})` : ""
-                    }`}
+                  {`XUSD Payment ${
+                    paymentWallet
+                      ? `(${truncateWalletAddress(paymentWallet)})`
+                      : ""
+                  }`}
                 </FormLabel>
                 <Switch
                   id="crypto"
                   isChecked={getValues("paymentMethod") === "crypto"}
-                  isDisabled={initialData.isCryptoPost === true && initialData.isPublished === true || initialData.isPublished === true || !isConnected && !paymentWallet}
+                  isDisabled={
+                    (initialData.isCryptoPost === true &&
+                      initialData.isPublished === true) ||
+                    initialData.isPublished === true ||
+                    (!isConnected && !paymentWallet)
+                  }
                   onChange={(e) => {
-                    setValue("paymentMethod", e.target.checked ? "crypto" : "fiat");
-                    onSubmit({ paymentMethod: e.target.checked ? "crypto" : "fiat" });
+                    setValue(
+                      "paymentMethod",
+                      e.target.checked ? "crypto" : "fiat"
+                    );
+                    onSubmit({
+                      paymentMethod: e.target.checked ? "crypto" : "fiat",
+                    });
                   }}
                 />
               </FormControl>
@@ -107,11 +125,11 @@ const PaymentCheck = ({ taskId, sectionId, setRefetchSection, initialData }) => 
               </div>
             )}
             {errors.paymentMethod && (
-              <FormErrorMessage>{errors.paymentMethod.message}</FormErrorMessage>
+              <FormErrorMessage>
+                {errors.paymentMethod.message}
+              </FormErrorMessage>
             )}
-            <Flex justify="end">
-              {!isConnected && <CustomConnectButton />}
-            </Flex>
+            <Flex justify="end">{!isConnected && <CustomConnectButton />}</Flex>
           </div>
         </form>
       </div>
