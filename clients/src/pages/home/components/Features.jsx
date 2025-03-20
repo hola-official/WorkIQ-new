@@ -11,7 +11,7 @@ const Features = () => {
     { icon: <Briefcase />, text: "Divide tasks into manageable sections" },
     {
       icon: <DollarSign />,
-      text: "Flexible payments with Stripe and XUSD on Celo",
+      text: "Flexible payments with Stripe and XUSD on CrossFi",
     },
     {
       icon: <Shield />,

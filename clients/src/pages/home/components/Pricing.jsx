@@ -46,10 +46,10 @@ const Pricing = () => {
           },
           {
             title: "Crypto Payments",
-            description: "Fast and borderless transactions with XUSD on Celo",
+            description: "Fast and borderless transactions with XUSD on CrossFi",
             features: [
               "XUSD stablecoin",
-              "Low gas fees on Celo",
+              "Low gas fees on CrossFi",
               "Instant settlements",
             ],
           },

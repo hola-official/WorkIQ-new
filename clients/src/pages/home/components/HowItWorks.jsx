@@ -44,7 +44,7 @@ const HowItWorks = () => {
       },
       {
         title: "Payment",
-        description: "Pay using Stripe or XUSD on Celo",
+        description: "Pay using Stripe or XUSD on CrossFi",
       },
     ],
   };

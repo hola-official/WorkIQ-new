@@ -54,7 +54,7 @@ const About = () => {
           WorkIQ is a cutting-edge freelancing platform that combines
           traditional payment methods with blockchain technology. We offer
           seamless integration with Stripe for conventional payments and support
-          XUSD transactions on the Celo network, providing our users with
+          XUSD transactions on the CrossFi network, providing our users with
           flexible, secure, and efficient payment options.
         </motion.p>
         <motion.p className="text-lg mb-6" variants={fadeIn}>
