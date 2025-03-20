@@ -22,9 +22,7 @@ const setupWebSocketProvider = () => {
     return;
   }
 
-  provider = new ethers.WebSocketProvider(
-    "wss://alfajores-forno.celo-testnet.org/ws"
-  );
+  provider = new ethers.WebSocketProvider(process.env.CROSSFI_WEBSOCKET_URL);
   contract = new Contract(contractAddress, contractABI, provider);
 
   provider.on("error", (error) => {
@@ -144,7 +142,9 @@ const setupEventListeners = () => {
             order.txHash = txHash;
             order.status = "delivered";
             // order.isApproved = true;
-            order.completionTimestamp = new Date(Number(completionTimestamp) * 1000);
+            order.completionTimestamp = new Date(
+              Number(completionTimestamp) * 1000
+            );
 
             await task.save();
           }
@@ -173,7 +173,7 @@ const setupEventListeners = () => {
           paymentMethod: "crypto",
           status: "success",
           txHash: txHash,
-          reference: "usdc withdraw",
+          reference: "XUSD withdraw",
         });
         console.log(
           `User withdrawal: ${userId}, ${ethers.formatUnits(amount, 6)}`
@@ -198,7 +198,7 @@ const setupEventListeners = () => {
           type: "deposit",
           paymentMethod: "crypto",
           status: "success",
-          reference: "usdc deposit",
+          reference: "XUSD deposit",
           txHash: txHash,
         });
         console.log(

@@ -129,7 +129,7 @@ const depositFunds = async (req, res) => {
   }
 };
 
-const depositUSDC = async (req, res) => {
+const depositXUSD = async (req, res) => {
   try {
     const userId = req.userId;
     const { amount, txHash } = req.body;
@@ -153,11 +153,11 @@ const depositUSDC = async (req, res) => {
     }
 
     // Update user's balance
-    const currentUsdcBalance = user.usdcBalance || 0;
-    const newUsdcBalance = currentUsdcBalance + parsedAmount;
+    const currentXUSDBalance = user.XUSDBalance || 0;
+    const newXUSDBalance = currentXUSDBalance + parsedAmount;
 
     await userModel.findByIdAndUpdate(userId, {
-      usdcBalance: newUsdcBalance,
+      XUSDBalance: newXUSDBalance,
     });
 
     // Create a new transaction record
@@ -165,7 +165,7 @@ const depositUSDC = async (req, res) => {
       user: userId,
       amount: parsedAmount,
       type: "deposit",
-      reference: "USDC deposit",
+      reference: "XUSD deposit",
       status: "success",
       txHash: txHash,
     });
@@ -176,7 +176,7 @@ const depositUSDC = async (req, res) => {
     try {
       await sendMail({
         email: user.email,
-        subject: "USDC Deposit Successful",
+        subject: "XUSD Deposit Successful",
         template: "deposit-mail.ejs",
         data: {
           user: { username: user.username },
@@ -185,18 +185,18 @@ const depositUSDC = async (req, res) => {
         },
       });
     } catch (error) {
-      console.log("Error sending USDC deposit email:", error);
+      console.log("Error sending XUSD deposit email:", error);
     }
 
     res.status(200).json({
-      message: "USDC deposit successful",
+      message: "XUSD deposit successful",
       data: newTransaction,
       success: true,
     });
   } catch (error) {
-    console.error("Error in depositUSDC:", error);
+    console.error("Error in depositXUSD:", error);
     res.status(500).json({
-      message: "USDC deposit failed",
+      message: "XUSD deposit failed",
       data: error.message,
       success: false,
     });
@@ -457,7 +457,7 @@ const stripeWebhook = async (req, res) => {
 
 module.exports = {
   depositFunds,
-  depositUSDC,
+  depositXUSD,
   createOrRefreshStripeConnectAccount,
   completeStripeConnectOnboarding,
   getPayoutDetails,

@@ -3,6 +3,7 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://localhost:3000",
   "https://work-iq.vercel.app",
+  "https://www.workiq.xyz/",
 ];
 
 module.exports = allowedOrigins;

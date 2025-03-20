@@ -7,13 +7,13 @@ const {
   getPayoutDetails,
   initiateWithdrawal,
   getWithdrawalHistory,
-  depositUSDC,
+  depositXUSD,
 } = require("../controllers/TransactionController");
 const verifyJWT = require("../middleware/verifyJWT");
 
 // Deposit funds
 router.post("/deposit-funds", verifyJWT, depositFunds);
-router.post("/deposit-usdc", verifyJWT, depositUSDC);
+router.post("/deposit-XUSD", verifyJWT, depositXUSD);
 
 // Stripe Connect account creation and management
 router.post(

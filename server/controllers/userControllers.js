@@ -864,6 +864,8 @@ const getFreelancerStats = async (req, res) => {
         },
       ],
     };
+    console.log(freelancer);
+    console.log(freelancer.balance);
     res.json({
       totalTasksCompleted,
       totalProposalsSent,

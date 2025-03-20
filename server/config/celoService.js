@@ -10,7 +10,7 @@
 
 // const cUSDTokenAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"; // cUSD token address on Celo Alfajores testnet
 // const cUSDTokenABI = ["..."]; // ABI of the cUSD token contract
-// const cUSDContract = new kit.web3.eth.Contract(cUSDTokenABI, cUSDTokenAddress);
+// const cXUSDontract = new kit.web3.eth.Contract(cUSDTokenABI, cUSDTokenAddress);
 
 // async function createOrder(clientAddress, freelancerAddress, amount) {
 //   try {
@@ -50,7 +50,7 @@
 
 // async function approvecUSD(userAddress, amount) {
 //   try {
-//     const txObject = await cUSDContract.methods.approve(escrowAddress, amount);
+//     const txObject = await cXUSDontract.methods.approve(escrowAddress, amount);
 //     const tx = await kit.sendTransactionObject(txObject, { from: userAddress });
 //     await tx.waitReceipt();
 //     return { success: true };
@@ -62,7 +62,7 @@
 
 // async function getcUSDBalance(userAddress) {
 //   try {
-//     const balance = await cUSDContract.methods.balanceOf(userAddress).call();
+//     const balance = await cXUSDontract.methods.balanceOf(userAddress).call();
 //     return { success: true, balance: balance };
 //   } catch (error) {
 //     console.error("Error getting cUSD balance:", error);
@@ -74,7 +74,7 @@
 //   // In a real-world scenario, this function would interact with a deposit contract or exchange
 //   // For this example, we'll simulate a deposit by transferring cUSD to the user's address
 //   try {
-//     const txObject = await cUSDContract.methods.transfer(userAddress, amount);
+//     const txObject = await cXUSDontract.methods.transfer(userAddress, amount);
 //     const tx = await kit.sendTransactionObject(txObject, { from: process.env.PLATFORM_WALLET_ADDRESS });
 //     const receipt = await tx.waitReceipt();
 //     return { success: true, txHash: receipt.transactionHash };
@@ -88,7 +88,7 @@
 //   // In a real-world scenario, this function would interact with a withdrawal contract or exchange
 //   // For this example, we'll simulate a withdrawal by transferring cUSD from the user's address to the platform wallet
 //   try {
-//     const txObject = await cUSDContract.methods.transferFrom(userAddress, process.env.PLATFORM_WALLET_ADDRESS, amount);
+//     const txObject = await cXUSDontract.methods.transferFrom(userAddress, process.env.PLATFORM_WALLET_ADDRESS, amount);
 //     const tx = await kit.sendTransactionObject(txObject, { from: process.env.PLATFORM_WALLET_ADDRESS });
 //     const receipt = await tx.waitReceipt();
 //     return { success: true, txHash: receipt.transactionHash };

@@ -60,9 +60,10 @@ const userSchema = new Schema(
     bio: { type: String },
     balance: {
       type: Number,
+      default: 0,
     },
     escrowBalance: { type: Number, default: 0 }, // New field for escrow balance
-    usdcBalance: {
+    XUSDBalance: {
       type: Number,
     },
     stripeAccountId: String,

@@ -5,7 +5,7 @@ const TASK_MANAGEMENT_ABI = [
     inputs: [
       {
         internalType: "address",
-        name: "_usdcTokenAddress",
+        name: "_XUSDTokenAddress",
         type: "address",
       },
     ],
@@ -898,7 +898,7 @@ const TASK_MANAGEMENT_ABI = [
   },
   {
     inputs: [],
-    name: "usdcToken",
+    name: "XUSDToken",
     outputs: [
       {
         internalType: "contract IERC20",
@@ -950,7 +950,7 @@ const TASK_MANAGEMENT_ABI = [
       },
       {
         internalType: "uint256",
-        name: "usdcBalance",
+        name: "XUSDBalance",
         type: "uint256",
       },
       {
